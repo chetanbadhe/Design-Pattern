@@ -1,0 +1,70 @@
+
+<project name="studentRecordsBackup" default="compile" basedir=".">
+
+  <property name="build.compiler"              value="modern"/>
+  <property name="src"                  value="src"/>
+  <property name="BUILD"                value="build"/>
+  <property name="classes"              value="${BUILD}/classes"/>
+
+
+  <target name="compile"
+          depends="studentBackup"/>
+
+  <target name="clean">
+       <delete dir="${BUILD}"/>
+  </target>
+
+  <!-- Prepare target directories -->
+  <target name="prepare">
+        <mkdir dir="${BUILD}"/>
+        <mkdir dir="${classes}"/>
+  </target>
+
+
+  <!-- ** means all subdirectories as well -->
+  <!-- * means all files in the current directory -->
+  <!-- for just java files use *.java -->
+
+  <target name="studentBackup" depends="prepare">
+    <javac srcdir="${src}"
+           includes="studentBackup/**"
+           excludes="**/package.html"
+           destdir="${classes}"
+           classpath="${classes}"
+           debug="on"
+           optimize="on"
+           deprecation="off"/>
+  </target>
+
+ <target name="jar">
+        <mkdir dir="${BUILD}/jar"/>
+        <jar destfile="${BUILD}/jar/studentBackup.jar" basedir="${BUILD}/classes">
+            <manifest>
+                <attribute name="Main-Class" value="studentBackup.driver.driver"/>
+            </manifest>
+        </jar>
+ 	</target>
+ 	
+ 	<target name="cleanLast">  
+ 	      <delete file="./studentRecordsBackup.tar" quiet="true" />
+ 	      <delete file="./Chetan_badhe.tar.gz" quiet="true"/>  
+ 	      </target> 
+ 	<target name="tar" depends="cleanLast">
+		<tar destfile="./studentRecordsBackup.tar" basedir="." excludes = "./build" />
+ 	</target>
+ 	
+ 	<target name="tarzip" depends="tar"> 
+	     
+	    <gzip src="./studentRecordsBackup.tar" destfile="./Chetan_Badhe.tar.gz" />
+	 </target>
+
+	<target name="run" depends="jar">
+		<java jar="${BUILD}/jar/studentRecordsBackup.jar"  fork="true">
+			<arg value="bstInput.txt"/>
+			<arg value="5"/>
+			<arg value="0"/>
+	 	</java>	
+    </target>
+
+
+</project>

@@ -1,0 +1,134 @@
+CS542 Design Patterns
+Fall 2013
+PROJECT Assignment 4 README FILE
+
+Due Date: Sunday, November 24, 2013
+Submission Date: Sunday, November 24, 2013
+Grace Period Used This Project: 0 Days
+Grace Period Remaining: 0 Days
+Author(s): Chetan Badhe
+e-mail(s): cbadhe1@binghamton.edu
+
+
+PURPOSE:
+
+[
+	Create a class Node to store the B-Number. The data type of the B-Number should be int. 
+	Assume that a student record just has a B-Number.
+  
+]
+
+PERCENT COMPLETE:
+
+[
+	I believe I have completed 100% of this project.
+]
+
+PARTS THAT ARE NOT COMPLETE:
+
+[
+	N/A
+]
+
+BUGS:
+
+[
+	None
+]
+
+FILES:
+
+[
+	studentRecordsBackup
+    bstInput.txt
+    build.xml
+	README     
+	src
+		studentBackup
+			
+			bst:
+				BST.java
+				BSTBuilder.java
+				BSTTree.java
+				Node.java
+
+			driver:
+				driver.java
+				
+			util:
+				BSTObserver.java
+				BSTSumVisitor.java
+				BSTUpdateVisitor.java
+				Debug.java
+				Observer.java
+				Subject.java
+				Visitor.java
+
+]
+
+SAMPLE OUTPUT:
+
+[
+bingsuns2% ant run MyAllTypes.txt MyAllTyoesCopy.txt 0
+Buildfile: build.xml
+
+jar:
+    [mkdir] Created dir: /u0/users/7/cbadhe1/ant/reflection/build/jar
+      [jar] Building jar: /u0/users/7/cbadhe1/ant/reflection/build/jar/reflection.jar
+
+run:
+     [java] Unique MyAllTypesFirst = 4 Unique MyAllTypesSecond = 9
+
+]
+
+TO COMPILE:
+
+[
+  Extract and Enter into the extracted directory
+  	cd Chetan_Badhe
+  	ant compile
+]
+
+TO RUN:
+
+[
+	Extract and Enter into the extracted directory, compile it
+	Please type ant run to run.
+]
+
+EXTRA CREDIT:
+
+[
+  N/A
+]
+
+NOTES :
+
+[
+	I have used Strategy pattern for serialization.
+	1 - Prints all created Tree nodes value
+	2 - Prints sum of all Tree nodes for each tree
+	3 - Prints all updated Tree nodes value
+	4 - Prints all created Tree in inorder traversal
+	5 - Prints all the above
+]
+
+
+BIBLIOGRAPHY:
+
+This serves as evidence that we are in no way intending Academic Dishonesty.
+Chetan Badhe
+
+
+[
+
+ 
+]
+
+ACKNOWLEDGEMENT:
+
+[
+	During the coding process one or more of the following people may have been consulted. Their help is greatly appreciated.
+	Prof. Madhusudan Govindraju, Binghamton University.
+	Elif Dede, Teaching Assistant , CS542, Binghamton University.
+]

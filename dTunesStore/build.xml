@@ -1,0 +1,66 @@
+
+<project name="reflection" default="compile" basedir=".">
+
+  <property name="build.compiler"              value="modern"/>
+  <property name="src"                  value="src"/>
+  <property name="BUILD"                value="build"/>
+  <property name="classes"              value="${BUILD}/classes"/>
+
+
+  <target name="compile"
+          depends="reflection"/>
+
+  <!-- Prepare target directories -->
+  <target name="prepare">
+        <mkdir dir="${BUILD}"/>
+        <mkdir dir="${classes}"/>
+  </target>
+
+
+  <!-- ** means all subdirectories as well -->
+  <!-- * means all files in the current directory -->
+  <!-- for just java files use *.java -->
+
+  <target name="reflection" depends="prepare">
+    <javac srcdir="${src}"
+           includes="reflection/**"
+           excludes="**/package.html"
+           destdir="${classes}"
+           classpath="${classes}"
+           debug="on"
+           optimize="on"
+           deprecation="off"/>
+  </target>
+
+ <target name="jar">
+        <mkdir dir="${BUILD}/jar"/>
+        <jar destfile="${BUILD}/jar/reflection.jar" basedir="${BUILD}/classes">
+            <manifest>
+                <attribute name="Main-Class" value="reflection.driver.driver"/>
+            </manifest>
+        </jar>
+ 	</target>
+ 	
+ 	<target name="cleanLast">  
+ 	      <delete file="./reflection.tar" quiet="true" />
+ 	      <delete file="./Chetan_badhe.tar.gz" quiet="true"/>  
+ 	      </target> 
+ 	<target name="tar" depends="cleanLast">
+		<tar destfile="./reflection.tar" basedir="." excludes = "./build" />
+ 	</target>
+ 	
+ 	<target name="tarzip" depends="tar"> 
+	     
+	    <gzip src="./reflection.tar" destfile="./Chetan_Badhe.tar.gz" />
+	 </target>
+
+	<target name="run" depends="jar">
+		<java jar="${BUILD}/jar/reflection.jar"  fork="true">
+			<arg value="MyAllTypes.txt"/>
+			<arg value="MyAllTypesCopy.txt"/>
+			<arg value="0"/>
+	 	</java>	
+    </target>
+
+
+</project>
